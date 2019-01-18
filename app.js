@@ -1,6 +1,5 @@
 $(document).ready(function() {
 
-
 	var $message = $('p.message');
 	var timeoutId;
 	function showMessage(message, reset) {
@@ -39,4 +38,6 @@ $(document).ready(function() {
 		}
 	});
 
+
+	// Inspired from https://gist.github.com/dusanmarsa/2ca9f1df36e14864328a2bb0b353332e
 });
