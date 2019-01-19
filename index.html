@@ -11,7 +11,7 @@
 
   <body>
 
-    <nav class="navbar navbar-dark bg-success">
+    <nav class="navbar navbar-dark bg-success fixed-top">
       <a class="navbar-brand" href="/">Image Clipboard Example</a>
       <ul class="navbar-nav pull-right">
         <li class="nav-item">
@@ -19,28 +19,17 @@
         </li>
       </ul>
     </nav>
-    <br/>
-    <br/>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <p class="message">Copy your screen by pressing on the Print Screen key. Then paste (Ctrl+v) it here as an image.</p>
-          <img class="image image-responsive" />
-        </div>
-      </div>
+    <div class="content">
+      <div class="message"></div>
+      <img class="image image-responsive" />
+      <canvas class="image image-responsive" />
     </div>
-    <br/>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <p>
-            <em>Coded by <a href="https://medium.com/@martindrapeau">Martin Drapeau</a>.</em>
-          </p>
-        </div>
-      </div>
-    </div>
+    <nav class="navbar fixed-bottom navbar-light bg-light">
+      <span class="message"></span>
+      <em class="pull-right">Coded by <a href="https://medium.com/@martindrapeau">Martin Drapeau</a>.</em>
+    </nav>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
