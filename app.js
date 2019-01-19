@@ -15,13 +15,14 @@ $(document).ready(function() {
 		}
 	}
 
-	var $img = $('img.image');
+	var $img = $('img').hide();
 	function loadImage(file) {
 		var deferred = new $.Deferred();
 		var reader = new FileReader();
 
 		showMessage('Loading image...');
 		reader.onload = function(e) {
+			$img.show();
 			$img.attr('src', e.target.result);
 			$canvas.hide();
 			$content.addClass('has-image');
@@ -34,7 +35,8 @@ $(document).ready(function() {
 		return deferred;
 	};
 
-	var $canvas = $('canvas');
+	var $canvas = $('canvas').hide();
+	var $size = $('.image-size');
 	function copyImageInCanvas() {
 		var canvas = $canvas[0];
 		var ctx = canvas.getContext("2d");
@@ -47,6 +49,7 @@ $(document).ready(function() {
 		$img.hide();
 		$canvas.show();
 		showMessage('Image pasted. You can paste again to replace.');
+		$size.html(image.naturalWidth + ' x ' + image.naturalHeight);
 	}
 
 	var IMAGE_MIME_REGEX = /^image\/(p?jpeg|gif|png)$/i;
@@ -63,7 +66,13 @@ $(document).ready(function() {
 		}
 	});
 
-	$message.html('Copy your screen by pressing on the Print Screen key. Then paste (Ctrl+v) it here as an image.');
+	var $mouse = $('.mouse-position');
+	$canvas.on('mousemove', function(e) {
+		var x = Math.round(e.pageX - $(this).offset().left);
+		var y = Math.round(e.pageY - $(this).offset().top);
+		$mouse.html(x + ', ' + y);
+	});
 
-	// Inspired from https://gist.github.com/dusanmarsa/2ca9f1df36e14864328a2bb0b353332e
+	$message.first().html('Copy your screen by pressing on the Print Screen key. Then paste (Ctrl+v) it here as an image.');
+
 });
